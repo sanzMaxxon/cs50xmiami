@@ -12,13 +12,13 @@ Why pay a fortune teller when you can just program your fortune yourself?
 
 // write your solution here...
 
-var numChildren = 2;
+var N = 3;
 
-var partnerName = "Taylor Swift";
+var Z = "Mrs Sanchez";
 
-var geoLocal = "Miami";
+var Y = "Fort Lauderdale";
 
-var jobTitle = "Hacker";
+var X = "Programmer";
 
-console.log("You will be a "+ jobTitle+ " in " + geoLocal + ", and married\
- to " + partnerName + " with " + numChildren+ " kids.");
+console.log("You will be a "+ X+ " in " + Y + ", and married\
+ to " + Z + " with " + N + " kids.");
