@@ -10,3 +10,9 @@ Forgot how old someone is? Calculate it!
 */
 
 // write your solution here...
+var thisYear = 2015;
+var birthYear = 1969;
+nn = thisYear - birthYear -1;
+N = thisYear - birthYear;
+
+console.log("They are either " + nn + " or " + N)
