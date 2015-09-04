@@ -10,3 +10,8 @@ http://math2.org/math/geometry/circles.htm
 */
 
 // write your solution here...
+var myRadius = 5;
+var myCircumference = myRadius * 3.141592 * 2;
+console.log("The circumference is " + myCircumference);
+var myArea = 3.141592 * myRadius * myRadius;
+console.log("The area is " + myArea); 
