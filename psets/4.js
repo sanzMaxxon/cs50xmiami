@@ -11,3 +11,9 @@ http://www.mathsisfun.com/temperature-conversion.html
 */
 
 // write your solution here...
+var celTemp = 31;
+var farTemp = celTemp * 9 / 5 + 32;
+console.log(celTemp + "\xB0C is " + farTemp + "\xB0F");
+var newFarTemp = 89;
+var newCelTemp = (newFarTemp -32) * 5 / 9;
+console.log(newFarTemp + "\xB0F is " + newCelTemp + "\xB0C");
