@@ -10,7 +10,7 @@ If the string length is less than 3, it should leave it unchanged.
 
 For example:
 
-  verbing('swim'): 'swimming'
+  verbing('swim'): 'swimming' mistake here, won't add another 'm'...
   verbing('swimming'): 'swimmingly'
   verbing('go'): 'go'
 
@@ -18,4 +18,13 @@ For example:
 
 function verbing(word) {
   // write your solution here...
+  if(word.length < 3)
+    console.log(word);
+  else if(word.substring(word.length - 3) == 'ing') {
+    console.log(word + 'ly');
+  }
+  else {
+    console.log(word + 'ing');
+  }
 }
+verbing('buying');
