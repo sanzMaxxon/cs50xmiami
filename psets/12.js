@@ -12,3 +12,7 @@ Write a function named calculateSupply that:
 */
 
 // write your solution here...
+var calculateSupply = function(age, amt){
+  console.log("You will need " + Math.round((90 - age) * amt * 365) + " to last you until the ripe old age of 90");
+}
+calculateSupply(45, 10/365);
