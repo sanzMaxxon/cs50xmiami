@@ -12,3 +12,7 @@ Write a function named calculateAge that:
 */
 
 // write your solution here...
+var calculateAge = function(birthYear, currentYear){
+  console.log("You are either " + (currentYear - birthYear - 1) + " or " + (currentYear - birthYear) + "");
+}
+calculateAge(1997, 2015);
