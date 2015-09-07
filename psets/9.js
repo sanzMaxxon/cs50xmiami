@@ -17,4 +17,26 @@ For example:
 
 function notBad(sentence) {
   // write your solution here...
+  if (sentence.indexOf('not') >= 0 && sentence.indexOf('bad') > sentence.indexOf('not')){
+    var newSentence = '';
+    var insert = 'good'
+    var inserted = 0;
+    for (var i = 0, n = sentence.length; i < n; i++){
+      if (i >= sentence.indexOf('not') && i <= sentence.indexOf('bad') + 3 && inserted == 0){
+        for (var k = 0, o = insert.length; k < o; k++){
+          newSentence += insert[k];
+        }
+        i = sentence.indexOf('bad') + 2;
+        inserted++;
+      }
+      else if (i < sentence.indexOf('not') || i > sentence.indexOf('bad') + 2){
+        newSentence += sentence[i];
+      }
+    }
+    return newSentence;
+  }
+  else {
+    return sentence;
+  }
 }
+console.log(notBad('This dinner is bad but not terrible!'));
