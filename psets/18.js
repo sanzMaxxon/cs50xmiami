@@ -7,3 +7,13 @@ The even/odd reporter
 */
 
 // write your solution here...
+var evenOdd = function(number){
+  if(number % 2 == 0)
+    return 'even';
+  else {
+    return 'odd';
+  }
+}
+for (var i = 0; i < 21; i++){
+  console.log(i + ' is ' + evenOdd(i));
+}
