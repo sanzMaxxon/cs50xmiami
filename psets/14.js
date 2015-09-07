@@ -14,3 +14,12 @@ Create a function called fahrenheitToCelsius:
 */
 
 // write your solution here...
+var celsiusToFahrenheit = function(celTemp){
+  return celTemp * 9 / 5 + 32;
+}
+var fahrenheitToCelsius = function(farTemp){
+  return (farTemp -32) * 5 / 9;
+}
+var celt = 33;
+var fart = 70;
+console.log(celt + "\xB0C is " + celsiusToFahrenheit(celt) + "\xB0F, and " + fart + "\xB0F is " + fahrenheitToCelsius(fart) + "\xB0C");
