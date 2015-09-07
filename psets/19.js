@@ -9,3 +9,24 @@ Write a for loop that will iterate from 0 to 10.
 */
 
 // write your solution here...
+var lineM = '';
+for (var i = 1; i < 11; i++){
+  for (var j = 1; j < 11; j++){
+    if (j == 1){
+      if (j * i < 10)
+        lineM += ' ' + (j * i);
+      else
+        lineM += (j * i);
+    }
+    else {
+      if (j * i < 10)
+        lineM += '   ' + (j * i);
+      else if (j * i < 100)
+        lineM += '  ' + (j * i);
+      else
+        lineM += ' ' + (j * i);
+    }
+  };
+  console.log(lineM);
+  lineM = '';
+};
