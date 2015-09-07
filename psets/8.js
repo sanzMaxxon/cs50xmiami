@@ -10,7 +10,7 @@ If the string length is less than 3, it should leave it unchanged.
 
 For example:
 
-  verbing('swim'): 'swimming' mistake here, won't add another 'm'...
+  verbing('swim'): 'swimming' (mistake here, won't add another 'm'...)
   verbing('swimming'): 'swimmingly'
   verbing('go'): 'go'
 
