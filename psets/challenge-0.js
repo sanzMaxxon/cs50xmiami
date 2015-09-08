@@ -27,3 +27,30 @@ Write a function that will take one argument (a number) and perform the followin
 */
 
 // write your solution here...
+var squareNumber = function (number){
+  var square = number * number;
+  console.log("The result of squaring the number " + number + " is " + square + '.');
+  return square;
+}
+var halfNumber = function (number){
+  var half = parseFloat(Math.round(number * 10 / 2) / 10).toFixed(1);
+  console.log("Half of " + number + " is " + half + '.');
+  return half;
+}
+var percentOf = function(num1, num2){
+  var percent = Math.round(num1 / num2 * 100);
+  console.log(num1 + ' is ' + percent + '% of ' + num2 + '.');
+  return percent;
+}
+var areaOfCircle = function(radius){
+  var area = parseFloat(Math.round(Math.PI * radius * radius * 100) / 100).toFixed(2);
+  console.log('The area for a circle with radius ' + radius + ' is ' + area);
+  return area;
+}
+var mashUp = function(number){
+  var medio = halfNumber(number);
+  var cuadrado = squareNumber(medio);
+  var circulo = areaOfCircle(cuadrado);
+  var result = percentOf(circulo, cuadrado);
+}
+mashUp(10);
