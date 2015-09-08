@@ -18,3 +18,21 @@ Never forget another recipe!
 */
 
 // write your solution here...
+var recipe = {
+  'title': 'Mole',
+  'Serves:': 2,
+  'Ingredients:': ['cinnamon', 'cumin', 'cocoa']
+}
+for (var key in recipe) {
+  if (key != 'title'){
+    console.log(key);
+  }
+  if (recipe[key].constructor === Array){
+    for (var item in recipe[key]){
+      console.log(recipe[key][item]);
+    }
+  }
+  else{
+    console.log(recipe[key]);
+  }
+}
