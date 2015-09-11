@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<!-- The Word Guesser
+
+You'll create a simple word guessing game where the user gets infinite tries to
+guess the word (like Hangman without the hangman, or
+like Wheel of Fortune without the wheel and fortune).
+
+
+- Create two global arrays: one to hold the letters of the
+  word (e.g. 'F', 'O', 'X'), and one to hold the current guessed letters
+  (e.g. it would start with '_', '_', '_' and end with 'F', 'O', 'X').
+
+- Write a function called guessLetter that will:
+  - Take one argument, the guessed letter.
+  - Iterate through the word letters and see if the guessed letter is in there.
+  - If the guessed letter matches a word letter, changed the guessed letters
+    array to reflect that.
+  - When it's done iterating, it should log the current guessed letters ('F__')
+  - and congratulate the user if they found a new letter.
+  - It should also figure out if there are any more letters that need to be guessed,
+  - and if not, it should congratulate the user for winning the game.
+
+- Pretend you don't know the word, and call guessLetter multiple times with
+  various letters to check that your program works.
+
+- Bonus: Make it more like Wheel of Fortune:
+  - Start with a reward amount of $0
+  - Every time a letter is guessed, generate a random amount and reward the user if they found a letter (multiplying the reward if multiple letters found), otherwise subtract from their reward.
+  - When they guess the word, log their final reward amount.
+
+- Bonus: Make it like Hangman:
+  - Keep track of all the guessed letters (right and wrong) and only let the user guess a letter once. If they guess a letter twice, do nothing.
+  - Keep track of the state of the hangman as a number (starting at 0), and subtract or add to that number every time they make a wrong guess.
+  - Once the number reaches 6 (a reasonable number of body parts for a hangman), inform the user that they lost and show a hangman on the log.
+*/
+
+// write your solution here... -->
+<html>
+  <head>
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet"/>
+    <meta charset="utf-8">
+    <title>Hangman!</title>
+  </head>
+  <body style="font-family: monospace">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">cs50xMiami</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="challenge-1.html">Hang Man</a></li>
+            <li><a href="#about">Assignment 2</a></li>
+            <li><a href="#contact">Assignment 3</a></li>
+            <li><a href="#contact">Assignment 4</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <div class="col-md-12" id="topper">
+      <h1 style="font-size:300%;text-align:center"><br />Hangman JS Edition</h1>
+      <br />
+    </div>
+    <div class="container marketing">
+      <div class="row featurette">
+      </div>
+      <div class="row featurette">
+        <div class="col-md-6">
+            <h2 class="text-muted">Play the game! <a class="btn btn-info" id="start" href="#" role="button">Start &raquo;</a></h2>
+          <h3 id="hang">Can you make it?</h3>
+          <br /><br />
+        </div>
+        <div class="col-md-6">
+          <h3 id="val"></h3>
+          <p class="lead" id="msg"></p>
+          <br />
+        </div>
+      </div>
+      <div class="row featurette">
+        <div class="col-md-6">
+          <span id="l1" class="lead">&nbsp;&nbsp;Guessed letters:<br /></span><br />
+          <p style="line-height:0%;">
+            <span id="l2" class="lead"></span><br />
+            <span id="l3" class="lead"></span><br />
+            <span id="l4" class="lead"></span><br />
+            <span id="l5" class="lead"></span><br />
+            <span id="l6" class="lead"></span><br />
+            <span id="l7" class="lead"></span><br />
+            <span id="l8" class="lead"></span><br />
+            <span id="l9" class="lead"></span><br />
+          </p>
+          <p>
+            <span id="l10" class="lead"></span><br />
+          </p>
+        </div>
+        <div class="col-md-6">
+          <span class="lead">Game Stats:</span><br />
+          <p style="line-height:70%;">
+            <p id="l12">Earnings: </p>
+            <p id="l13">Last Hand:</p>
+            <p id="l14">&nbsp;</p>
+            <p id="l15">Guesses: </p>
+            <p id="l16">Correct:</p>
+            <p id="l17">Mistaken:</p>
+            <p id="l18">Remaining:</p>
+            <p id="l19"></p>
+            <p id="l20"></p>
+            <p id="l21"></p>
+            <p id="l22"></p>
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+      var specialChars = function(string){
+        var chars = "<>@!#$%^&*()_+[]{}?:;|'\"\\,./~`-="
+        for(i = 0; i < chars.length; i++){
+          if(string.indexOf(chars[i]) > -1){
+            return true;
+          }
+        }
+        return false;
+      };
+      var renderVal = function(leng){
+        var dollars = 0 + leng * 10;
+        for (var i = 0; i < leng; i++) {
+          dollars = Math.floor(dollars * 1.2);
+        }
+        document.getElementById('val').innerHTML = 'For ' + dollarFormat(dollars) + ', guess the next letter!';
+        return dollars;
+      }
+      var renderGuesses = function(word, guesses){
+        var len = guesses.length;
+        if (len == 0){
+          document.getElementById('l1').innerHTML = '&nbsp;&nbsp;Guessed letters:<br />';
+        }
+        else {
+          var letters = '';
+          for (var i = 0; i < len; i++) {
+            var newletter = 0;
+            for(var n = 0; n < word.length; n++){
+              if (word[n] == guesses[i] && newletter == 0){
+                letters += '&nbsp;<span style="color:#4EAB6D;">' + guesses[i] + '</span>';
+                newletter++;
+              }
+            }
+            if (newletter == 0){
+              letters += '&nbsp;<span style="color:#BA3043;">' + guesses[i] + '</span>';
+            }
+          }
+          document.getElementById('l1').innerHTML = '&nbsp;&nbsp;Guessed letters:<br />' + letters + '</br>';
+        }
+      };
+      var renderPlatform = function(){
+        document.getElementById('l2').innerHTML = '&nbsp;&nbsp;______<br />';
+        document.getElementById('l3').innerHTML = '&nbsp;&nbsp;|<br />';
+        document.getElementById('l4').innerHTML = '&nbsp;&nbsp;|<br />';
+        document.getElementById('l5').innerHTML = '&nbsp;&nbsp;|<br />';
+        document.getElementById('l6').innerHTML = '&nbsp;&nbsp;|<br />';
+        document.getElementById('l7').innerHTML = '__|_______<br />';
+        document.getElementById('l8').innerHTML = '|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|_____<br />';
+        document.getElementById('l9').innerHTML = '|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />';
+      };
+      var renderHangman = function (mistakes, wordComplete){
+        var head = '&nbsp;&nbsp;&nbsp;';
+        var legs = '&nbsp;&nbsp;&nbsp;';
+        if(mistakes > 0){
+          document.getElementById('l3').innerHTML = '&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#BA3043;">|</span><br />';
+        }
+        if(mistakes > 2){
+          head = '<span style="color:#BA3043;">\\O&nbsp;</span>';
+        }
+        else if (mistakes > 1){
+          head = '<span style="color:#BA3043;">&nbsp;O&nbsp;</span>';
+        }
+        if (mistakes > 3){
+          head = '<span style="color:#BA3043;">\\O/</span>';
+        }
+        if (mistakes > 6){
+          head += '<span style="color:#BA3043;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;O&nbsp;&nbsp;U</span>';
+        }
+        if (wordComplete == 1){
+          head += '<span style="color:#4EAB6D;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;O&nbsp;&nbsp;U</span>';
+        }
+        document.getElementById('l4').innerHTML = '&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;' + head + '<br />';
+        if (mistakes > 4){
+          document.getElementById('l5').innerHTML = '&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#BA3043;">|</span><br />';
+        }
+        if (mistakes > 5){
+          legs = '<span style="color:#BA3043;">/&nbsp;&nbsp;</span>';
+        }
+        if (mistakes > 6){
+          legs = '<span style="color:#BA3043;">/&nbsp;\\</span>';
+        }
+        if (wordComplete == 1){
+          legs += '<span style="color:#4EAB6D;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;W&nbsp;&nbsp;I&nbsp;&nbsp;N&nbsp;&nbsp;!&nbsp;&nbsp;!</span>';
+        }
+        if (mistakes > 6){
+          legs += '<span style="color:#BA3043;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L&nbsp;&nbsp;O&nbsp;&nbsp;S&nbsp;&nbsp;E&nbsp;&nbsp;!</span>';
+        }
+        document.getElementById('l6').innerHTML = '&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;' + legs + '<br />';
+      };
+      var renderWord = function(word, guesses, done){
+        var line = '';
+        if(done == 1){
+          for (var l = 0; l < word.length; l++){
+            var right = 0;
+            for (var m = 0; m <guesses.length; m++){
+              if (word[l] == guesses[m]){
+                line += '&nbsp;&nbsp;' + word[l];
+                right++;
+              }
+            }
+            if (right == 0){
+              line += '&nbsp;&nbsp;<span style="color:#BA3043"><u>' + word[l] + '</u></span>';
+            }
+          }
+        }
+        else {
+          for (var l = 0; l < word.length; l++){
+            var correct = 0;
+            for (var m = 0; m <guesses.length; m++){
+              if (word[l] == guesses[m]){
+                line += '&nbsp;&nbsp;' + word[l];
+                correct++;
+              }
+            }
+            if (correct == 0){
+              line += '&nbsp;&nbsp;_';
+            }
+          }
+        }
+        document.getElementById('l10').innerHTML = line + '<br />';
+      }
+      var dollarFormat = function(number)
+      {
+         var thousandseparater = ",";
+         number = parseFloat(number);
+         var sign = number < 0 ? "-$" : "$";
+         var formatted = new String(number.toFixed(0));
+         var integer = new String(formatted);
+         if( integer ) { integer = String(Math.abs(integer)); }
+         temparray = new Array();
+         while( integer.length > 3 )
+         {
+            temparray.unshift(integer.substr(-3));
+            integer = integer.substr(0,integer.length-3);
+         }
+         temparray.unshift(integer);
+         integer = temparray.join(thousandseparater);
+         return sign + integer;
+      }
+      var reset = function(word){
+        renderGuesses(word, '');
+        renderWord(word, '', 0);
+        renderPlatform();
+        renderHangman(0,0);
+        document.getElementById('msg').innerHTML = '';
+        document.getElementById('l12').innerHTML = 'Earnings:';
+        document.getElementById('l13').innerHTML = 'Last Hand:';
+        document.getElementById('l15').innerHTML = 'Guesses:';
+        document.getElementById('l16').innerHTML = 'Correct:';
+        document.getElementById('l17').innerHTML = 'Mistaken:';
+        document.getElementById('l18').innerHTML = 'Remaining:';
+      }
+
+      renderPlatform();
+      renderHangman(0,0);
+      var name = prompt("Let's play! Please enter your name:", "Name");
+      if (name == null || name == 'Name' || name == 'null'){
+        document.getElementById('hang').innerHTML = "Will it be a hanging?";
+      }
+      else {
+        document.getElementById('hang').innerHTML = 'Will ' + name + ' die by hanging?';
+      }
+      document.getElementById('start').onclick = function(){
+        var wordlist = ["PASSWORD", "ALGORITHM", "FUNCTION", "OPERATION", "APPLICATION", "DESKTOP", "RECURSION", "COMPILER", "INTERPRETER", "TRANSLATE", "HYPERTEXT", "SUBROUTINE", "PROCESS", "ENCRYPTION", "ROUTER", "HARDWARE", "SOFTWARE", "INTERNET", "KEYBOARD", "MULTIMEDIA", "PROCESSOR", "SCANNER", "COMMAND", "INTERACTIVE", "COLLISION", "DOMAIN", "LATENCY", "TRANSACTION", "SEGMENTATION", "ETHERNET", "TRANSMISSION", "PROTOCOL", "UNSHIELDED", "ADAPTER", "NETWORK", "PERIPHERAL", "RATTLESNAKE", "ROOSTER", "CHIMPANZEE", "CROCODILE", "HIPPOPOTAMUS", "SCORPION", "ELEPHANT", "SWORDFISH", "TADPOLE", "STURGEON", "ARMADILLO", "KANGAROO", "PORCUPINE", "ALLIGATOR", "PANTHER", "BEAVER", "MICROPROCESSOR", "COMPUTER", "PROGRAMMING", "DEVELOPER", "ORGANIZATION", "ENCOURAGE", "SIGNATURE", "OBJECTIVE", "WHOLESALE", "PAYMENT", "GUARANTEE", "ENVIRONMENT", "EQUIPMENT", "DEPARTMENT", "CONFIRMATION", "COMMISSION", "SCHEDULE", "PURCHASE", "KNOWLEDGE", "COMPETITOR", "AUTHORIZATION", "SUCCESS", "ADVANTAGE", "WEAKNESS", "RESPONSIVE", "PROMOTION", "IMPROVEMENT", "TRANSPORTATION", "SELECTION", "TOBACCO", "UNIVERSE", "SATELLITE", "TREATED", "SATISFIED", "SPECIES", "NEIGHBORHOOD", "EXPLANATION", "GRANDMOTHER", "INDEPENDENT", "MANUFACTURING", "MATHEMATICS", "ESSENTIAL", "DONKEY", "FIREPLACE", "DISCUSSION", "ATTEMPT", "CONSTANT", "VARIABLE", "MEMORY", "ARRANGEMENT", "SCIENCE", "PERSON", "THING", "GOVERNMENT", "COMPANY", "PROBLEM", "IMPORTANT", "DIFFERENT", "BENEATH", "GROUP", "GOSSIP", 'MOROCCO', "HOLLYWOOD", "FLORIDA", "LONDON", "CONTINENT", "COLOSSEUM", "CHALLENGE", "BROWSER", "LANGUAGE", "JAVASCRIPT", "PANZY"]
+        var word = wordlist[Math.floor(Math.random() * wordlist.length)];
+        var mistakes = 0;
+        var guesses = [];
+        var hits = 0;
+        var totalDollars = 0;
+        var correctGuesses = 0;
+        var lastRound = 0;
+        var remaining = 0;
+        var repeated = 0;
+        var roll = 0;
+        var streak = 0;
+        var dollars = renderVal(guesses.length);
+        reset(word);
+        while(mistakes < 7 || hits >= word.length){
+          do{
+            var guess = (prompt('Please enter a letter')).substring(0,1).toUpperCase();
+          }
+          while(guess == '' || !isNaN(guess) || specialChars(guess));
+          for (var k = 0; k < guesses.length; k++){
+            if (guess == guesses[k]){
+              repeated++;
+            }
+          }
+          if (repeated == 0){
+            var ctr = 0;
+            for (var j = 0; j < word.length; j++) {
+              if (guess == word[j]){
+                hits++;
+                ctr++;
+                totalDollars += dollars;
+              }
+            }
+            if (ctr == 0){
+              mistakes++;
+              totalDollars -= dollars;
+            }
+            if (mistakes > 6 || hits == word.length){
+              if (totalDollars < 0){
+                document.getElementById('msg').innerHTML = 'You owe us ' + dollarFormat(Math.abs(totalDollars)) + '! We accept <img src="images/accepted.jpg" title="Just kidding!!" />';
+              }
+              else {
+                document.getElementById('msg').innerHTML = '<span style="color:#4EAB6D;">WELL DONE! You just won ' + dollarFormat(totalDollars) + '!!!</span>';
+              }
+            }
+            else if(ctr > 1){
+              roll = 0;
+              streak++;
+              document.getElementById('msg').innerHTML = '<span style="color:#4EAB6D;">AWESOME!! You got ' + ctr + 'X bonus!</span>';
+            }
+            else if(ctr == 1 && streak > 0){
+              roll = 0;
+              streak++;
+              document.getElementById('msg').innerHTML = '<span style="color:#4EAB6D;">You are doing GREAT!! ' + streak + ' in a row!</span>';
+            }
+            else if(ctr == 1){
+              roll = 0;
+              streak++;
+              document.getElementById('msg').innerHTML = '<span style="color:#4EAB6D;">Nice! Keep going, you can do this!</span>';
+            }
+            else if(ctr == 0 && roll > 0){
+              roll++;
+              streak = 0;
+              document.getElementById('msg').innerHTML = '<span style="color:#BA3043;">' + roll + ' times wrong in a row! That leads to an untimely death!</span>';
+            }
+            else {
+              roll++;
+              streak = 0;
+              document.getElementById('msg').innerHTML = '<span style="color:#BA3043;">You missed one, but you can turn it around!</span>';
+            }
+            guesses.push(guess);
+            lastRound = dollars;
+            dollars = renderVal(guesses.length);
+            renderGuesses(word, guesses);
+            renderHangman(mistakes, hits/word.length)
+            renderWord(word, guesses, 0);
+            if(totalDollars < 0){
+              document.getElementById('l12').innerHTML = 'Earnings:&nbsp;&nbsp;&nbsp;<span style="color:#BA3043;">' + dollarFormat(totalDollars) + '</span>';
+            }
+            else {
+              document.getElementById('l12').innerHTML = 'Earnings:&nbsp;&nbsp;&nbsp;' + dollarFormat(totalDollars);
+            }
+            document.getElementById('l13').innerHTML = 'Last Hand:&nbsp;&nbsp;' + dollarFormat(lastRound);
+            document.getElementById('l15').innerHTML = 'Guesses:&nbsp;&nbsp;&nbsp;&nbsp;' + guesses.length;
+            document.getElementById('l16').innerHTML = 'Correct:&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#4EAB6D;">' + hits + '</span>';
+            document.getElementById('l17').innerHTML = 'Mistaken:&nbsp;&nbsp;&nbsp;<span style="color:#BA3043;">' + mistakes + '</span>';
+            document.getElementById('l18').innerHTML = 'Remaining:&nbsp;&nbsp;' + (7 - mistakes);
+            }
+            if (mistakes > 6 || hits == word.length){
+              renderWord(word, guesses, 1);
+              return;
+            }
+          repeated = 0;
+        }
+      }
+    </script>
+  </body>
+</html>
