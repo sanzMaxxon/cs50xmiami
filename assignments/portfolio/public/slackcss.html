@@ -4,60 +4,101 @@
     <meta charset="utf-8">
     <title>Slack Simulation</title>
     <link href="css/slack.css" rel="stylesheet" type="text/css" />
+    <link id="favicon" rel="shortcut icon" href="images/favicon-32.png" sizes="16x16 32x32 48x48" type="image/png" />
   </head>
   <body class="container">
     <div id="header">
-      <h2 class="head-text"><span class="muted">#</span>resources <span class="detail muted glyphicon glyphicon-menu-down"></span></h2>
+      <h2 class="head-text"><span class="muted mid">#</span><span class="xheavy">resources</span> <span class="detail muted glyphicon glyphicon-menu-down"></span></h2>
     </div>
     <div id="search-header">
-      <div class="circle-div">&middot;&middot;&middot;</div>
-      <div class="circle-div"><span class="glyphicon glyphicon-star"></span></div>
-      <div class="circle-div">@</div>
+      <div class="blue circle-div">&middot;&middot;&middot;</div>
+      <div class="orange circle-div"><span class="glyphicon glyphicon-star"></span></div>
+      <div class="red circle-div">@</div>
       <div id="search-box" class="muted">&nbsp;&nbsp;<span class="glyphicon glyphicon-search"></span> Search</div>
-      <div class="circle-div"><span class="glyphicon glyphicon-info-sign"></span></div>
-      <div class="noflare"><span class="glyphicon glyphicon-user"></span> 30</div>
+      <div class="blue circle-div"><span class="glyphicon glyphicon-info-sign"></span></div>
+      <div class="noflare"><span class="silver glyphicon glyphicon-user"></span> 30</div>
     </div>
     <div id="sidebar">
       <a href="index.html"><div id="sidebar-header">
-        <h2><span class="side-highlight">#MDCS50 </span><span class="header-right glyphicon glyphicon-menu-down"></span></h2>
+        <p><span class="side-highlight">#MDCS50 </span><span class="header-right glyphicon glyphicon-menu-down"></span></p>
         <p class="small"><span class="glyphicon full-dot activated"></span> sanzmaxxon</p><br />
       </div></a>
       <div id="sidebar-main">
-        <p>CHANNELS <span class="right glyphicon glyphicon-plus-sign" title="Create new Channel"></span></p>
-        <p>#<span class="side-highlight">general</span></p>
-        <p>#resources</p>
-        <p class="moreinfo">+1 More...</p><br /><br />
-        <p>DIRECT MESSAGES <span class="right glyphicon glyphicon-plus-sign" title="Open a Direct Message"></span></p>
-        <p><span class="glyphicon glyphicon-heart aqua"></span> slackbot</p>
-        <p><span class="glyphicon empty-dot"></span><em> don</em></p>
-        <p><span class="glyphicon full-dot aqua"></span> dsat</p>
-        <p><span class="glyphicon empty-dot"></span><em> ednnd</em></p>
-        <p><span class="glyphicon empty-dot"></span><em> loke</em></p>
-        <p><span class="glyphicon full-dot aqua"></span> piratedunbar</p>
-        <p><span class="glyphicon empty-dot"></span><em> rgpla26</em></p>
-        <p><span class="glyphicon full-dot aqua"></span> rodjs</p>
-        <p><span class="glyphicon full-dot aqua"></span> sallyaplatt</p>
-        <p><span class="glyphicon full-dot aqua"></span> thegersheffect</p>
-        <p><span class="glyphicon empty-dot"></span><em> veragilford</em></p>
-        <p class="moreinfo">+45 More...</p>
-        <br /><br />
-        <p>PRIVATE GROUPS <span class="right glyphicon glyphicon-plus-sign" title="Create new group"></span></p>
-        <p class="moreinfo">New private group...</p><br /><br />
-        <br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <div class="side-item-inactive">
+          <span class="side-link">CHANNELS</span> <span class="subdued-link right glyphicon glyphicon-plus-sign" title="Create new Channel"></span>
+        </div>
+        <div class="side-item">
+          <span class="subdued"># </span><span class="side-text">general</span>
+        </div>
+        <div class="side-item-active">
+          <span class="hour"># </span>resources
+        </div>
+        <p class="moreinfo side-link">+1 More...</p><br /><br />
+        <div class="side-spacer"></div>
+        <div class="side-item-inactive">
+          <span class="half-space side-link">DIRECT MESSAGES</span> <span class="subdued-link right glyphicon glyphicon-plus-sign" title="Open a Direct Message"></span>
+        </div>
+        <div class="side-item">
+          <span class="side-text"><span class="glyphicon glyphicon-heart aqua"></span> slackbot</span><span class="item-right glyphicon glyphicon-remove-circle"></span>
+        </div>
+        <div class="side-item">
+          <span class="side-text out"><span class="glyphicon empty-dot"></span> don</span><span class="item-right glyphicon glyphicon-remove-circle"></span>
+        </div>
+        <div class="side-item">
+          <span class="side-text"><span class="glyphicon full-dot aqua"></span> dsat</span><span class="item-right glyphicon glyphicon-remove-circle"></span>
+        </div>
+        <div class="side-item">
+          <span class="side-text out"><span class="glyphicon empty-dot"></span> ednnd</span><span class="item-right glyphicon glyphicon-remove-circle"></span>
+        </div>
+        <div class="side-item">
+          <span class="side-text out"><span class="glyphicon empty-dot"></span> loke</span><span class="item-right glyphicon glyphicon-remove-circle"></span>
+        </div>
+        <div class="side-item">
+          <span class="side-text"><span class="glyphicon full-dot aqua"></span> piratedunbar</span><span class="item-right glyphicon glyphicon-remove-circle"></span>
+        </div>
+        <div class="side-item">
+          <span class="side-text out"><span class="glyphicon empty-dot"></span> rgpla26</span><span class="item-right glyphicon glyphicon-remove-circle"></span>
+        </div>
+        <div class="side-item">
+          <span class="side-text"><span class="glyphicon full-dot aqua"></span> rodjs</span><span class="item-right glyphicon glyphicon-remove-circle"></span>
+        </div>
+        <div class="side-item">
+          <span class="side-text"><span class="glyphicon full-dot aqua"></span> sallyaplatt</span><span class="item-right glyphicon glyphicon-remove-circle"></span>
+        </div>
+        <div class="side-item">
+          <span class="side-text"><span class="glyphicon full-dot aqua"></span> thegersheffect</span><span class="item-right glyphicon glyphicon-remove-circle"></span>
+        </div>
+        <div class="side-item">
+          <span class="side-text out"><span class="glyphicon empty-dot"></span> veragilford</span><span class="item-right glyphicon glyphicon-remove-circle"></span>
+        </div>
+        <p class="moreinfo side-link">+45 More...</p>
+        <div class="side-spacer"></div>
+        <div class="side-item-inactive">
+          <span class="half-space side-link">PRIVATE GROUPS</span> <span class="subdued-link right glyphicon glyphicon-plus-sign" title="Create new group"></span>
+        </div>
+        <p class="full-space moreinfo side-link">New private group...</p>
       </div>
       <div id="sidebar-footer">
         <p><span class="glyphicon glyphicon-list"></span></p>
       </div>
+      <div class="clearfix">.</div>
     </div>
     <div id="main">
-      <p><img src="images/lcarson.png" class="thumbnail" /><strong>lcarson35 </strong><span class="hour">&nbsp;4:19 PM <span class="glyphicon glyphicon-star"></span></span><br /><span class="muted"><em>joined #resources</em></span></p>
-      <p><img src="images/piratedunbar.jpg" class="thumbnail" /><strong>piratedunbar </strong><span class="hour">&nbsp;8:08 PM <span class="glyphicon glyphicon-star"></span></span><br /><a href="expressjs.com">expressjs.com</a></p>
-      <p><img src="images/piratedunbar.jpg" class="thumbnail" /><strong>piratedunbar </strong><span class="hour">&nbsp;8:47 PM <span class="glyphicon glyphicon-star"></span></span><br /><a href="bootstrapcdn.com">http://www.bootstrapcdn.com/</a></p>
+      <p><img src="images/lcarson.png" class="thumbnail" /><span class="user">lcarson35 </span><span class="hour">&nbsp;4:19 PM <span class="glyphicon glyphicon-star"></span></span><br /><span class="muted"><em>joined #resources</em></span></p>
+      <p><img src="images/piratedunbar.jpg" class="thumbnail" /><span class="user">piratedunbar </span><span class="hour">&nbsp;8:08 PM <span class="glyphicon glyphicon-star"></span></span><br /><a href="expressjs.com">expressjs.com</a></p>
+      <p><img src="images/piratedunbar.jpg" class="thumbnail" /><span class="user">piratedunbar </span><span class="hour">&nbsp;8:47 PM <span class="glyphicon glyphicon-star"></span></span><br /><a href="bootstrapcdn.com">http://www.bootstrapcdn.com/</a></p>
       <p class="sub">Bootstrap CDN</p>
-      <p><img src="images/Gersh.jpg" class="thumbnail" /><strong>thegerscheffect </strong><span class="hour">&nbsp;8:03 PM <span class="glyphicon glyphicon-star"></span></span><br /><span class="muted"><em>joined #resources. Also, <a href="#">@emhendy</a> joined.</em></span></p>
-      <p><img src="images/Michelle.png" class="thumbnail" /><strong>michelewu1 </strong><span class="hour">&nbsp;8:17 PM <span class="glyphicon glyphicon-star"></span></span><br /><span class="muted"><em>joined #resources. Also, <a href="#">@oliver84</a> joined, <a href="#">@stellated</a> joined, <a href="#">@annelise</a> joined, <a href="#">@josequiroz</a> joined, <a href="#">@arturojreal</a> joined, <a href="#">@donyadd</a> joined.</em></span></p>
-      <p><img src="images/piratedunbar.jpg" class="thumbnail" /><strong>piratedunbar </strong><span class="hour">&nbsp;8:23 PM <span class="glyphicon glyphicon-star"></span></span><br /><a href="https://atom.io/">https://atom.io/</a></p>
-      <p class="sub"><span class="hour">Atom</span><br /><a href="https://atom.io/"><strong>A hackable text editor for the 21st Century</strong></a><br />At GitHub, we’re building the text editor we’ve always wanted: hackable to the core, but approachable on the first day without ever touching a config file. We can’t wait to see what you build with it. (32KB)<br /><img src="images/ATOM.png" width="400px" height="210px" /></p>
+      <div class="divider-holder">
+        <div class="date-msg">September 2nd</div>
+        <hr class="divider">
+      </div>
+      <p><img src="images/Gersh.jpg" class="thumbnail" /><span class="user">thegerscheffect </span><span class="hour">&nbsp;8:03 PM <span class="glyphicon glyphicon-star"></span></span><br /><span class="muted"><em>joined #resources. Also, <a href="#">@emhendy</a> joined.</em></span></p>
+      <p><img src="images/Michelle.png" class="thumbnail" /><span class="user">michelewu1 </span><span class="hour">&nbsp;8:17 PM <span class="glyphicon glyphicon-star"></span></span><br /><span class="muted"><em>joined #resources. Also, <a href="#">@oliver84</a> joined, <a href="#">@stellated</a> joined, <a href="#">@annelise</a> joined, <a href="#">@josequiroz</a> joined, <a href="#">@arturojreal</a> joined, <a href="#">@donyadd</a> joined.</em></span></p>
+      <p><img src="images/piratedunbar.jpg" class="thumbnail" /><span class="user">piratedunbar </span><span class="hour">&nbsp;8:23 PM <span class="glyphicon glyphicon-star"></span></span><br /><a href="https://atom.io/">https://atom.io/</a></p>
+      <p class="sub"><span class="hour">Atom</span><br /><a href="https://atom.io/"><strong>A hackable text editor for the 21st Century</strong></a><br />At GitHub, we’re building the text editor we’ve always wanted: hackable to the core, but approachable on the first day without ever touching a config file. We can’t wait to see what you build with it. (32KB)<br /><img src="images/ATOM.png" class="innerimg" width="400px" height="210px" /></p>
+      <p class="clearfix"><img src="images/fgarcia.png" class="thumbnail" /><span class="user">fgarcia4047 </span><span class="hour">&nbsp;9:19 PM <span class="glyphicon glyphicon-star"></span></span><br /><span class="muted"><a href="https://www.khanacademy.org/computing/computer-programming/programming">https://www.khanacademy.org/computing/computer-programming/programming</a></p>
+      <p class="sub"><span class="hour">Khan Academy</span><br /><a href="https://atom.io/"><strong>Intro to JS: Drawing & Animation</strong></a><br />Learn how to use the JavaScript language and the ProcessingJS library to create fun drawings and animations. (5KB)<br/><img src="images/khan.png" class="innerimg" width="178px" height="250px" /></p>
+
       <p><br /><br /><br /></p>
     </div>
     <div id="footer">
@@ -67,8 +108,5 @@
            </table>
          </div>
     </div>
-
-
-
   </body>
 </html>
