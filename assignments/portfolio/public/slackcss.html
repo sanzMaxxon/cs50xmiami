@@ -5,6 +5,24 @@
     <title>Slack Simulation</title>
     <link href="css/slack.css" rel="stylesheet" type="text/css" />
     <link id="favicon" rel="shortcut icon" href="images/favicon-32.png" sizes="16x16 32x32 48x48" type="image/png" />
+    <!-- jScrollPane package -->
+    <link rel="stylesheet" type="text/css" href="css/jscrollpane.css" />
+
+    <!-- latest jQuery direct from google's CDN -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!-- the jScrollPane script -->
+    <script type="text/javascript" src="js/jscrollpane.js"></script>
+
+    <!--instantiate after some browser sniffing to rule out webkit browsers-->
+    <script type="text/javascript">
+
+      $(document).ready(function () {
+          if (!$.browser.webkit) {
+              $('.container').jScrollPane();
+          }
+      });
+
+    </script>
   </head>
   <body class="container">
     <div id="header">
@@ -76,7 +94,7 @@
         <div class="side-item-inactive">
           <span class="half-space side-link">PRIVATE GROUPS</span> <span class="subdued-link right glyphicon glyphicon-plus-sign" title="Create new group"></span>
         </div>
-        <p class="full-space moreinfo side-link">New private group...</p>
+        <p class="moreinfo side-link">New private group...</p>
       </div>
       <div id="sidebar-footer">
         <p><span class="glyphicon glyphicon-list"></span></p>
@@ -96,7 +114,7 @@
       <p><img src="images/Michelle.png" class="thumbnail" /><span class="user">michelewu1 </span><span class="hour">&nbsp;8:17 PM <span class="glyphicon glyphicon-star"></span></span><br /><span class="muted"><em>joined #resources. Also, <a href="#">@oliver84</a> joined, <a href="#">@stellated</a> joined, <a href="#">@annelise</a> joined, <a href="#">@josequiroz</a> joined, <a href="#">@arturojreal</a> joined, <a href="#">@donyadd</a> joined.</em></span></p>
       <p><img src="images/piratedunbar.jpg" class="thumbnail" /><span class="user">piratedunbar </span><span class="hour">&nbsp;8:23 PM <span class="glyphicon glyphicon-star"></span></span><br /><a href="https://atom.io/">https://atom.io/</a></p>
       <p class="sub"><span class="hour">Atom</span><br /><a href="https://atom.io/"><strong>A hackable text editor for the 21st Century</strong></a><br />At GitHub, we’re building the text editor we’ve always wanted: hackable to the core, but approachable on the first day without ever touching a config file. We can’t wait to see what you build with it. (32KB)<br /><img src="images/ATOM.png" class="innerimg" width="400px" height="210px" /></p>
-      <p class="clearfix"><img src="images/fgarcia.png" class="thumbnail" /><span class="user">fgarcia4047 </span><span class="hour">&nbsp;9:19 PM <span class="glyphicon glyphicon-star"></span></span><br /><span class="muted"><a href="https://www.khanacademy.org/computing/computer-programming/programming">https://www.khanacademy.org/computing/computer-programming/programming</a></p>
+      <p class="clearfix"><img src="images/fgarcia.png" class="thumbnail" /><span class="user">fgarcia4047 </span><span class="hour">&nbsp;9:19 PM <span class="glyphicon glyphicon-star"></span></span><br /><span class="muted"><a href="https://www.khanacademy.org/computing/computer-programming/programming">https://www.khanacademy.org/computing/computer-programming/programming</a></span></p>
       <p class="sub"><span class="hour">Khan Academy</span><br /><a href="https://atom.io/"><strong>Intro to JS: Drawing & Animation</strong></a><br />Learn how to use the JavaScript language and the ProcessingJS library to create fun drawings and animations. (5KB)<br/><img src="images/khan.png" class="innerimg" width="178px" height="250px" /></p>
 
       <p><br /><br /><br /></p>

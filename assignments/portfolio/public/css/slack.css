@@ -6,16 +6,59 @@
 	overflow-x: hidden;
 	margin: 0px;
 }
+::-webkit-scrollbar {
+  width: 8px;
+	color:#f3f3f3;
+} /* this targets the default scrollbar (compulsory) */
+::-webkit-scrollbar-track {
+  background-color: #f3f3f3;
+} /* the new scrollbar will have a flat appearance with the set background color */
+
+::-webkit-scrollbar-thumb {
+  background-color: #d9d9de;
+	height: 70px!Important;
+	border-radius: 3px;
+} /* this will style the thumb, ignoring the track */
+
+::-webkit-scrollbar-button {
+	display: none;
+  background-color: #7c2929;
+} /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+
+::-webkit-scrollbar-corner {
+  background-color: black;
+} /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+#sidebar-main::-webkit-scrollbar {
+  width: 8px;
+	color:#AB9BA9;
+} /* this targets the default scrollbar (compulsory) */
+#sidebar-main::-webkit-scrollbar-track {
+  background-color: #4D394B;
+} /* the new scrollbar will have a flat appearance with the set background color */
+
+#sidebar-main::-webkit-scrollbar-thumb {
+  background-color: #AB9BA9;
+	border-radius: 3px;
+} /* this will style the thumb, ignoring the track */
+
+#sidebar-main::-webkit-scrollbar-button {
+	display: none;
+  background-color: #7c2929;
+} /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+
+#sidebar-main::-webkit-scrollbar-corner {
+  background-color: black;
+} /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
 #header{
 	color:#3D3C45;
 	position: fixed;
-	height: 50px;
+	height: 49px;
 	left:220px;
 	right: 0px;
 	margin-top:-10px;
 	background-color: #fff;
 	z-index: 1;
-	padding: 12px 0 0 24px;
+	padding: 13px 0 0 25px;
 }
 #search-header{
 	background-color: #fff;
@@ -116,6 +159,9 @@
 }
 .small{
 	font-size: 14px;
+	position: relative;
+	top: -1px;
+	right: -1px;
 }
 .divider-holder{
 	position: relative;
@@ -170,7 +216,7 @@
 	color: #fff;
 }
 .side-spacer{
-	height:25px;
+	height:28px;
 	width:10px;
 	display: block;
 }
@@ -201,15 +247,15 @@
 }
 #sidebar-main{
 	position: fixed;
-	top:58px;
-	bottom: 50px!Important;
+	top:71px;
+	bottom: 64px!Important;
 	left: 0px;
 	width: 186px;
-	padding: 18px 18px 18px 16px;
+	padding: 6px 18px 18px 16px;
 	color:#4D394B;
 	background-color:#4D394B;
 	overflow-x: hidden;
-	overflow-y: auto;
+	overflow-y: scroll;
 }
 #sidebar-footer{
 	background-color:#4D394B;
@@ -233,11 +279,12 @@
 }
 #main{
 	position: absolute;
-	top:45px;
+	top:62px;
 	right:0px;
-	bottom: 0px;
+	bottom: 64px;
 	left:220px;
-	padding: 24px;
+	padding: 10px 24px 10px 24px;
+	overflow-y: scroll;
 }
 img{
 	float: left;
@@ -291,8 +338,9 @@ img{
 .header-right{
 	float: right;
 	position: absolute;
-	top:5px!Important;
-	right: 4px;
+	font-size: 18px!Important;
+	top:-2px!Important;
+	right: 3px;
 }
 .right{
 	float: right;
@@ -311,9 +359,6 @@ img{
 .moreinfo{
 	text-decoration: underline;
 	text-decoration-style: dotted;
-}
-.full-space{
-	line-height: 90%;
 }
 .half-space{
 	line-height: 30%;
