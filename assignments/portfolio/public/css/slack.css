@@ -114,6 +114,7 @@
 	background-color: #fff;
 	float: right;
 	font-weight: bold;
+	color:#9E9EA6;
 }
 #main h2{
 	color:#555463;
@@ -140,22 +141,34 @@
 	color:#9E9EA6;
 }
 .silver{
-	color:#9E9EA6;
-}
-.silver:hover{
 	color:#67686e;
 }
-.blue,.orange,.red{
+.noflare:hover{
 	color:#67686e;
+	cursor: pointer;
+}
+.blue,.orange,.red,.light-blue{
+	color:#67686e;
+}
+.light-blue{
+	font-size: 10px;
+	font-weight: normal;
 }
 .blue:hover{
 	color:#2a80b9;
+	cursor: pointer;
+}
+.light-blue:hover{
+	color: #439fe0;
+	cursor: pointer;
 }
 .orange:hover{
 	color:#F6AF3C;
+	cursor: pointer;
 }
 .red:hover{
 	color:#ef2c69;
+	cursor: pointer;
 }
 .small{
 	font-size: 14px;
@@ -210,6 +223,7 @@
 .side-item:hover{
 	background-color: #3e313c;
 	color:#AB9BA9;
+	cursor: pointer;
 }
 .side-item-active{
 	background-color: #4c9689;
@@ -244,6 +258,7 @@
 #sidebar-header:hover{
 	background-color:#3e313c;
 	color:#fff;
+	cursor: pointer;
 }
 #sidebar-main{
 	position: fixed;
@@ -273,6 +288,7 @@
 #sidebar-footer:hover{
 	background-color:#3e313c;
 	color:#fff;
+	cursor: pointer;
 }
 .clearfix{
 	clear: both;
@@ -306,6 +322,7 @@ img{
 }
 .side-link:hover{
 	color:#fff;
+	cursor: pointer;
 }
 .out{
 	font-style: italic;
@@ -317,6 +334,7 @@ img{
 }
 .thumbnail:hover{
 	opacity: 1;
+	cursor: pointer;
 }
 #main>p{
 	line-height: 140%;
@@ -334,6 +352,7 @@ img{
 }
 .subdued-link:hover{
 	color:#AB9BA9;
+	cursor: pointer;
 }
 .header-right{
 	float: right;
@@ -366,7 +385,7 @@ img{
 .detail{
 	font-size: .4em!Important;
 }
-#thumbsup{
+#smily{
 	display: block;
 	position: absolute;
 	bottom: 0px;
@@ -374,19 +393,22 @@ img{
 	width: 46px;
 	height: 42px;
 	color: #e0e0e0;
-	font-size: 24px;
+	font-size: 18px;
 	text-align: center;
 	line-height: 42px;
 }
-#thumbsup:hover{
-	font-size: 28px;
+#smily:hover{
+	font-size: 22px;
+	font-weight: 400;
 	color: #F09F35;
+	cursor: pointer;
 }
 .user{
 	font-weight: 900;
 }
 .user:hover{
 	text-decoration: underline;
+	cursor: pointer;
 }
 .hour{
 	color:#BEBDC1;
@@ -394,6 +416,7 @@ img{
 }
 .hour:hover{
 	text-decoration: underline;
+	cursor: pointer;
 }
 a {
 	text-decoration: none;
@@ -402,6 +425,7 @@ a {
 a:hover{
 	color:#4F90CC;
 	text-decoration: underline;
+	cursor: pointer;
 }
 .sub{
 	padding-left: 45px;
@@ -439,15 +463,17 @@ a:hover{
 	width: 44px;
 	height: 42px;
 	color: #999999;
-	font-size: 33px;
+	font-size: 26px;
 	text-align: center;
 	line-height: 42px;
 	border-right: 2px solid #e0e0e0;
-	border-radius: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 #formsubmit:hover{
 	background-color: #56b68b;
 	color: #fff;
+	cursor: pointer;
 }
 
 @font-face{font-family:'Glyphicons Halflings';src:url(../fonts/glyphicons-halflings-regular.eot);src:url(../fonts/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'),url(../fonts/glyphicons-halflings-regular.woff2) format('woff2'),url(../fonts/glyphicons-halflings-regular.woff) format('woff'),url(../fonts/glyphicons-halflings-regular.ttf) format('truetype'),url(../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg')}.glyphicon{
